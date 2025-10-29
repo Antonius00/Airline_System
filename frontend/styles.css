@@ -1,0 +1,58 @@
+.topContainer {
+  border: 10px ridge rgb(0, 40, 200);
+  background-color: rgb(0, 149, 255);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  font-size: 32px;
+}
+.midContainer {
+}
+.midCard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+.navRight {
+  float: right;
+  border: 0;
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+  border-radius: 10px;
+  background-color: rgb(13, 36, 189);
+  background-image: linear-gradient(
+    to top right,
+    rgb(0 0 0 / 0.2),
+    rgb(0 0 0 / 0.2) 30%,
+    transparent
+  );
+  box-shadow: inset 2px 2px 3px rgb(255 255 255 / 0.6),
+    inset -2px -2px 3px rgb(0 0 0 / 0.6);
+}
+.navCenter {
+  float: center;
+  border: 0;
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+  border-radius: 10px;
+  background-color: rgb(13, 36, 189);
+  background-image: linear-gradient(
+    to top right,
+    rgb(0 0 0 / 0.2),
+    rgb(0 0 0 / 0.2) 30%,
+    transparent
+  );
+  box-shadow: inset 2px 2px 3px rgb(255 255 255 / 0.6),
+    inset -2px -2px 3px rgb(0 0 0 / 0.6);
+}
