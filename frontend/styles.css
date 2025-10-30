@@ -8,6 +8,11 @@
   font-size: 32px;
 }
 .midContainer {
+  display: flex; /* Arranges the cards in a row */
+  justify-content: center; /* Centers the cards horizontally */
+  align-items: flex-start; /* Lines them up at the top */
+  gap: none; /* Adds a 20px space between the two cards */
+  padding: none; /* Adds some space around the group of cards */
 }
 .midCard {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
