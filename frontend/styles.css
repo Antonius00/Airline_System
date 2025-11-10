@@ -16,6 +16,7 @@
   align-items: flex-start; /* Lines them up at the top */
   gap: 20px; /* Adds a 20px space between the two cards */
   padding: 20px; /* Adds some space around the group of cards */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .midCard img {
   width: 100%;
@@ -27,6 +28,7 @@
   font-family: arial;
   max-width: 200px;
   margin: 20px auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .navRight {
   float: right;
