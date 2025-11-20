@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { z } from "zod";
-import { createUser } from "./auth.js";
+import { createUser, userLogin } from "./auth.js";
+import { parse } from "dotenv";
 
 const router = Router();
 
@@ -12,15 +13,15 @@ const signupSchema = z.object({
   password: z.string().min(8).max(128),
 });
 
-router.post('/signup', asyn(req, res) => {
+router.post("/signup", async (req, res) => {
   const parsed = signupSchema.safeParse(req.body);
 
-  if (!parsed.success){
-    return res.status(400).json({ 
-        error: "invalid_input", 
-        details: parsed.error.flatten() 
+  if (!parsed.success) {
+    return res.status(400).json({
+      error: "invalid_input",
+      details: parsed.error.flatten(),
     });
-  }; 
+  }
 
   try {
     const user = await createUser(parsed.data);
@@ -33,6 +34,28 @@ router.post('/signup', asyn(req, res) => {
     console.error(err);
     res.status(500).json({ error: "server_error" });
   }
+});
+
+const loginSchema = z.object({
+  usernameOrEmail: z.string(),
+  password: z.string(),
+});
+router.post("/login", async (req, res) => {
+  const parsed = loginSchema.safeParse(req.body);
+
+  if (!parsed.success) {
+    return res.status(400).json({
+      error: "invalid_input",
+      details: parsed.error.flatten(),
+    });
+  }
+  const user = await userLogin(parsed.data);
+  if (!user) {
+    return res.status(401).json({
+      error: "invalid_credentials",
+    });
+  }
+  return res.status(200).json({ user });
 });
 
 export default router;
