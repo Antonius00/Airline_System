@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Registration Form</title>
+    <link rel="stylesheet" href="signup_login.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Sign-Up</h2>
+
+      <form id="signUpForm">
+        <!-- First Name -->
+        <label>First Name *</label>
+        <input type="text" id="firstName" required />
+        <span id="FnError" style="color: red"></span>
+
+        <!-- Last Name -->
+        <label>Last Name *</label>
+        <input type="text" id="lastName" required />
+        <span id="LnError" style="color: red"></span>
+
+        <!-- Email -->
+        <label>Email *</label>
+        <input type="email" id="email" required />
+        <span id="EmailError" style="color: red"></span>
+
+        <!-- Password -->
+        <label>Password *</label>
+        <input type="password" id="password" required />
+        <span id="PasswordError" style="color: red"></span>
+
+        <!-- Confirm Password -->
+        <label>Confirm Password *</label>
+        <input type="password" id="confirmPassword" required />
+        <span id="ConfirmPasswordError" style="color: red"></span>
+
+        <!-- Date of Birth -->
+        <label>Date of Birth *</label>
+        <input type="date" id="dob" required />
+
+        <!-- Gender -->
+        <label>Gender *</label>
+        <select id="gender" required>
+          <option value="">-- Select Gender --</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+
+        <!-- Phone -->
+        <label>Phone *</label>
+        <input type="tel" id="phone" placeholder="123-456-7890" required />
+        <span id="phoneError" style="color: red"></span>
+
+        <!-- Terms & Conditions -->
+        <label>
+          <input type="checkbox" id="terms" required />
+          I agree to the Terms and conditions*
+        </label>
+
+        <button type="submit">Sign-Up</button>
+
+        <p id="errorMessage"></p>
+      </form>
+    </div>
+
+    <script src="signUp.js"></script>
+  </body>
+</html>
