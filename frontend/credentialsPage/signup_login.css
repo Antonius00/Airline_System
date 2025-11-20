@@ -3,17 +3,30 @@ form {
   border: 3px solid #f1f1f1;
 }
 
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
 /* Full-width inputs */
 input[type="text"],
-input[type="password"] {
-  width: 30%;
+input[type="password"],
+input[type="email"],
+input[type="Username"],
+input[type="First Name"],
+input[type="Last Name"] {
+  width: 50%;
   padding: 12px 20px;
   margin: 8px 0;
-  display: inline-block;
+  display: block;
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
-
+hbutton {
+  float: right;
+  text-align: right;
+}
 /* Set a style for all buttons */
 button {
   background-color: #0462aa;
@@ -60,6 +73,13 @@ span.psw {
   padding-top: 16px;
 }
 
+/* the create account text*/
+span.signup {
+  padding-top: 16px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
@@ -69,4 +89,25 @@ span.psw {
   .cancelbtn {
     width: 100%;
   }
+}
+
+.navRight {
+  float: right;
+  border: 0;
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+  border-radius: 10px;
+  background-color: rgb(13, 36, 189);
+  background-image: linear-gradient(
+    to top right,
+    rgb(0 0 0 / 0.2),
+    rgb(0 0 0 / 0.2) 30%,
+    transparent
+  );
+  box-shadow: inset 2px 2px 3px rgb(255 255 255 / 0.6),
+    inset -2px -2px 3px rgb(0 0 0 / 0.6);
 }
