@@ -5,6 +5,7 @@ import { parse } from "dotenv";
 
 const router = Router();
 
+// signup schema
 const signupSchema = z.object({
   email: z.string().email(),
   username: z.string().min(3).max(50),
@@ -36,6 +37,7 @@ router.post("/signup", async (req, res) => {
   }
 });
 
+// Login Schema
 const loginSchema = z.object({
   usernameOrEmail: z.string(),
   password: z.string(),
