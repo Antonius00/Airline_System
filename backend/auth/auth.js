@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 //creates users
 export async function createUser({
   email,
-  username,
+  userName,
   firstName,
   lastName,
   password,
@@ -15,7 +15,7 @@ export async function createUser({
         values ($1, $2, $3, $4, $5)
         returning id, email, username, first_name, last_name, created_at
     `;
-  const params = [email, username, firstName, lastName, passwordHash];
+  const params = [email, userName, firstName, lastName, passwordHash];
   const { rows } = await pool.query(sql, params);
   return rows[0];
 }

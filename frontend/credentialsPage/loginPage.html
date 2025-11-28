@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="signup_login.css" />
-<script src="script.js"></script>
+<link rel="stylesheet" href="/credentialsPage/signup_login.css" />
 <html>
-  <form action="action_page.php" method="post">
+  <form id="login">
     <div class="container">
       <h2>
         Login
@@ -13,11 +12,24 @@
     </div>
 
     <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required />
+      <label for="uname"><b>Username (or E-mail)</b></label>
+      <input
+        type="text"
+        placeholder="Enter Username or E-mail"
+        id="uname"
+        name="uname"
+        required
+      />
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required />
+      <input
+        type="password"
+        placeholder="Enter Password"
+        id="psw"
+        name="psw"
+        required
+      />
+      <span id="loginError" style="color: red"></span>
 
       <button type="submit">Login</button>
       <label>
@@ -34,4 +46,5 @@
       <span class="psw">Forgot <a href="#">password?</a></span>
     </div>
   </form>
+  <script src="/credentialsPage/loginPage.js"></script>
 </html>

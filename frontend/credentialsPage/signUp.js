@@ -47,8 +47,29 @@ function ValidateLastName() {
 
 FnInput.addEventListener("input", ValidateFirstName);
 LnInput.addEventListener("input", ValidateLastName);
-
 // --------------------------------------------------------------------  //
+
+// this is where i will validate the email i submit is correct and
+// meets the requirements for an email
+// --------- Core validation for email ------------------------------//
+const emailInput = document.getElementById("email");
+const emailError = document.getElementById("EmailError");
+const emailformat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function ValidateEmail() {
+  let isValid = true;
+  const emailValue = emailInput.value;
+  if (emailformat.test(emailValue)) {
+    emailError.textContent = "";
+    emailInput.style.borderBlockColor = "green";
+  } else {
+    emailError.innerHTML =
+      "Email needs to be in this format 'example123@gmail.com' ";
+    isValid = false;
+  }
+}
+emailInput.addEventListener("input", ValidateEmail);
+// --------------------------------------------------------------------- //
 
 // Password Validation:
 // Password and Confirm Password must match
@@ -106,32 +127,39 @@ ConfirmPasswordInput.addEventListener("input", ValidatePassword);
 
 // ---------------------------------------------------- //
 
-// Phone Number Format
-// Validate the phone number using a Regular Expression
-// Format must be: xxx-xxx-xxxx
-// (Example: 123-456-7890)
+// ---------- Core Fetch to SignUp ----------------------//
+const errorBox = document.getElementById("errorMessage");
+regForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const email = document.getElementById("email").value.trim();
+  const userName = document.getElementById("userName").value.trim();
+  const firstName = document.getElementById("firstName").value.trim();
+  const lastName = document.getElementById("lastName").value.trim();
+  const password = document.getElementById("password").value.trim();
 
-// ---------- Phone Number Validation --------------------//
-
-const validNumber = /^\d{3}-\d{3}-\d{4}$/;
-const phoneNumberinput = document.getElementById("phone");
-const phoneNumError = document.getElementById("phoneError");
-
-function ValidatePhoneNumber() {
-  let isValid = true;
-  const number = phoneNumberinput.value;
-  if (validNumber.test(number)) {
-    phoneNumError.textContent = "";
-    phoneNumberinput.style.border = "green";
-  } else {
-    phoneNumError.innerHTML = `<ul>
-    <li>Phone number Format must be: xxx-xxx-xxxx.
-    <li>(Example: 123-456-7890)
-    </ul>
-    `;
-    isValid = false;
+  const body = { email, userName, firstName, lastName, password };
+  const res = await fetch("http://localhost:3000/auth/signup", {
+    method: "POST",
+    headers: { "Content-type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  try {
+    if (res.ok) {
+      errorBox.style.color = "green";
+      errorBox.textContent =
+        "Account created successfully! Redirecting to login...";
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, 2000);
+    } else {
+      const data = await res.json().catch(() => ({}));
+      errorBox.textContent =
+        data.error === "duplicate"
+          ? "Email or username already taken."
+          : data.error || "Sign up Failed";
+    }
+  } catch (err) {
+    console.error(err);
+    errorBox.textContent = "Network error. Please try again.";
   }
-  return isValid;
-}
-phoneNumberinput.addEventListener("input", ValidatePhoneNumber);
-phoneNumError.addEventListener("input", ValidatePhoneNumber);
+});
