@@ -57,3 +57,9 @@ export async function userLogin({ usernameOrEmail, password }) {
   const { password_hash, ...safeUser } = user;
   return safeUser;
 }
+
+export async function bookFlight({ seats, location, price }) {
+  const sql = `
+  ...
+  `;
+}

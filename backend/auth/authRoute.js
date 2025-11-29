@@ -60,4 +60,20 @@ router.post("/login", async (req, res) => {
   return res.status(200).json({ user });
 });
 
+const detailsSchema = z.object({
+  seats: z.string(),
+  location: z.string(),
+  price: z.string(),
+});
+router.post("/details", async (req, res) => {
+  const parsed = detailsSchema.safeParse(req.body);
+
+  if (!parsed.success) {
+    return res.status(400).json({
+      error: "invalid_input",
+      details: parsed.error.flatten(),
+    });
+  }
+});
+
 export default router;
