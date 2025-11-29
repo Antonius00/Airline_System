@@ -59,7 +59,7 @@ export async function userLogin({ usernameOrEmail, password }) {
 }
 
 // allows users to choose flights, seats and price of flight tickets
-export async function bookFlight({ seats, location, price }) {
+export async function searchFlight({}) {
   const sql = `
   ...
   `;
