@@ -60,6 +60,7 @@ router.post("/login", async (req, res) => {
   return res.status(200).json({ user });
 });
 
+// book flight schema
 const detailsSchema = z.object({
   seats: z.string(),
   location: z.string(),

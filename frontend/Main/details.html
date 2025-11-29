@@ -1,0 +1,54 @@
+<!-- details.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Flight Details</title>
+    <link rel="stylesheet" href="/Main/details.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Welcome, where would you like to go?</h1>
+    </header>
+
+    <main class="details-container">
+      <form id="flight-details-form">
+        <div class="form-row">
+          <label for="from">From</label>
+          <input
+            type="text"
+            id="from"
+            name="from"
+            placeholder="Origin airport code"
+            required
+          />
+        </div>
+
+        <div class="form-row">
+          <label for="to">To</label>
+          <input
+            type="text"
+            id="to"
+            name="to"
+            placeholder="Destination airport code"
+            required
+          />
+        </div>
+
+        <div class="form-row">
+          <label for="depart">Depart</label>
+          <input type="date" id="depart" name="depart" required />
+        </div>
+
+        <div class="form-row">
+          <label for="return">Return</label>
+          <input type="date" id="return" name="return" />
+        </div>
+
+        <button type="submit" id="search-button">Search Flights</button>
+      </form>
+    </main>
+
+    <script src="/Main/details.js"></script>
+  </body>
+</html>
