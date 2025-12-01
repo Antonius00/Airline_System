@@ -59,8 +59,15 @@ export async function userLogin({ usernameOrEmail, password }) {
 }
 
 // allows users to choose flights, seats and price of flight tickets
-export async function searchFlight({}) {
+export async function searchFlight({ from, to, depart }) {
   const sql = `
-  ...
+    select *
+    from airline.flights
+    where origin_iata = $1
+    and destination_iata = $2
+    and departure_date = $3
   `;
+  const params = [from, to, depart];
+  const { rows } = await pool.query(sql, params);
+  return rows;
 }

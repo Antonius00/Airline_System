@@ -39,4 +39,8 @@ app.get("/search-flights", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/Main/searchDate.html"));
 });
 
+app.get("/flight-details", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/Details/flightDetails.html"));
+});
+
 app.listen(3000, () => console.log("API on http://localhost:3000"));

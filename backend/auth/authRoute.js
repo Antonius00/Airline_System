@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { object, z } from "zod";
-import { createUser, userLogin } from "./auth.js";
+import { createUser, userLogin, searchFlight } from "./auth.js";
 import { parse } from "dotenv";
 
 const router = Router();
@@ -68,9 +68,39 @@ const searchFlightschema = z.object({
 });
 router.get("/search-flights", async (req, res) => {
   const parsed = searchFlightschema.safeParse(req.query);
-  return res.status(400).json({
-    error: "invalid_input",
-  });
+
+  if (!parsed.success) {
+    return res.status(400).json({
+      error: "invalid_input",
+      details: parsed.error.flatten(),
+    });
+  }
+
+  try {
+    const flights = await searchFlight(parsed.data);
+    return res.status(200).json({ flights });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "server_error" });
+  }
+});
+
+const flightDetailsSchema = z.object({
+  from: z.string(),
+  to: z.string(),
+  price: z.string(),
+});
+router.get("/flight-details", async (req, res) => {
+  const parsed = flightDetailsSchema.safeParse(req.query);
+  if (!parsed.success) {
+    return (
+      res.status(400),
+      json({
+        error: "invalid",
+        details: parsed.error.flatten(),
+      })
+    );
+  }
 });
 
 export default router;
